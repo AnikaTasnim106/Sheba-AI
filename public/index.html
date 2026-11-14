@@ -620,13 +620,15 @@ async function handle(raw, {instant=false}={}){
 
 /* ---------------- AI server (Gemini via /api) with offline fallback ---------------- */
 (async()=>{ try{ const r=await fetch("api/chat",{cache:"no-store"}); if(r.ok){ const j=await r.json(); API=!!j.ai; } }catch{} setAiPill(); })();
-async function post(path, body){
-  const r = await fetch(path,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)});
+async function post(path, body, ms=20000){
+  const r = await fetch(path,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body),signal:AbortSignal.timeout(ms)});
   if(!r.ok) throw new Error("http "+r.status); return r.json();
 }
 async function understandSmart(text){
   const rx = understand(text);
-  if(!API) return rx;
+  // The fast keyword pass already understood the message: skip the extra AI round-trip.
+  const clear = rx.svc || rx.soon || rx.loc || rx.field || rx.pages || rx.validity || rx.delivery || rx.broker || rx.kind;
+  if(!API || clear) return rx;
   try{
     const {f} = await post("api/chat",{mode:"understand",text,state:S,lastQuestion:S.lastQ});
     const m = {...rx, ...f};
@@ -683,7 +685,7 @@ function openDocCheck(){
     e.target.disabled=true; e.target.textContent="পড়ছি…";
     try{
       const images = await Promise.all([toJpeg(files.A),toJpeg(files.B)]);
-      const r = await post("api/vision",{images});
+      const r = await post("api/vision",{images},60000);
       renderDocResult(r);
     }catch{ addBot(`<p>ছবিগুলো পড়তে পারিনি। আরও পরিষ্কার, সোজা করে তোলা ছবি দিয়ে আবার চেষ্টা করুন।</p>`); }
     e.target.disabled=false; e.target.textContent="আবার মিলিয়ে দেখুন";

@@ -38,7 +38,7 @@ export default async function handler(req, res) {
   try {
     const parts = [{ text: `There are ${images.length} document photo(s), in order 0..${images.length - 1}.` },
       ...images.map(im => ({ inlineData: { mimeType: im.mime, data: im.data } }))];
-    const { json, model } = await geminiJSON({ system: SYSTEM, parts, temperature: 0 });
+    const { json, model } = await geminiJSON({ system: SYSTEM, parts, temperature: 0, speed: "full", timeoutMs: 50000 });
     const out = scrubIds(json || {});
     out.documents = (Array.isArray(out.documents) ? out.documents : []).slice(0, 3);
     out.mismatches = (Array.isArray(out.mismatches) ? out.mismatches : []).slice(0, 6);

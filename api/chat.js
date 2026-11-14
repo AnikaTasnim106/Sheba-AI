@@ -59,7 +59,7 @@ export default async function handler(req, res) {
       const { json, model } = await geminiJSON({
         system: UNDERSTAND,
         parts: [{ text: `Conversation state: ${stateLine(state)}\nLast question Sheba AI asked: ${body.lastQuestion || "none"}\nMessage: ${text}` }],
-        temperature: 0,
+        temperature: 0, speed: "fast", timeoutMs: 9000,
       });
       const j = json || {};
       const f = {};
@@ -85,7 +85,7 @@ export default async function handler(req, res) {
       let facts = `Service: ${svc ? SVC[svc].name : "unknown"}. Official portal: ${svc ? SVC[svc].portalName : "-"}. User location: ${state.loc === "abroad" ? (state.country || "abroad") : state.loc === "bd" ? "Bangladesh" : "unknown"}.`;
       if (svc === "passport" && state.loc !== "abroad" && state.pages && state.validity && state.delivery)
         facts += ` Official fee for the user's choice (${state.pages} pages, ${state.validity} years, ${state.delivery}): BDT ${FEES[state.pages][state.validity][state.delivery]} including VAT.`;
-      const { json, model } = await geminiJSON({ system: ANSWER, parts: [{ text: `FACTS: ${facts}\nSOURCES:\n${sources}\n\nUser: ${text}` }], temperature: 0.2 });
+      const { json, model } = await geminiJSON({ system: ANSWER, parts: [{ text: `FACTS: ${facts}\nSOURCES:\n${sources}\n\nUser: ${text}` }], temperature: 0.2, speed: "fast", timeoutMs: 15000 });
       const used = (Array.isArray(json.used) ? json.used : []).map(n => hits[n - 1]).filter(Boolean).map(h => h.c.src);
       return send(res, 200, {
         reply: scrubIds(String(json.reply || "")).slice(0, 1500),
