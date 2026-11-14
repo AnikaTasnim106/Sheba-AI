@@ -1,0 +1,105 @@
+// Generated from public/index.html — the knowledge base, fee table and BM25 retrieval shared with the frontend.
+const VERIFIED = "১৪ নভেম্বর ২০২৬";
+const SRC = {
+  unb_nid:{t:"UNB · NID সংশোধন প্রক্রিয়া",u:"https://unb.com.bd/category/Lifestyle/bangladesh-smart-national-id-card-correction-process-payments-and-necessary-documents/85744"},
+  tbs_nid:{t:"TBS · NID সংশোধনের ভোগান্তি",u:"https://www.tbsnews.net/features/panorama/never-ending-nightmare-nid-corrections-bangladesh-1099006"},
+  palo_45:{t:"Prothom Alo · ৪৫ দিনে নিষ্পত্তির নির্দেশ",u:"https://en.prothomalo.com/bangladesh/3r56fv59jr"},
+  nid_fees:{t:"NID Wing · অফিসিয়াল ফি পেজ",u:"https://services.nidw.gov.bd/nid-pub/fees"},
+  unb_broker:{t:"UNB · NID দালাল আটক",u:"https://unb.com.bd/news/tag/61715"},
+  dt_nid:{t:"Dhaka Tribune · সংশোধন আবেদন প্রক্রিয়া",u:"https://www.dhakatribune.com/bangladesh/385651/nearly-350-000-nids-pending-correction"},
+  bcg_dubai:{t:"বাংলাদেশ কনস্যুলেট দুবাই · NID",u:"https://bcgdubai.gov.bd/?p=1061"},
+  tbs_gd:{t:"TBS · হারানো NID-তে জিডি লাগবে না",u:"https://www.tbsnews.net/bangladesh/now-no-need-file-gd-if-nid-lost-ec-1229221"},
+  nidw_dup:{t:"NID Wing · ডুপ্লিকেট কার্ড",u:"https://nidw.gov.bd/IssuanceDuplicateNID.php"},
+  unb_dl:{t:"UNB · NID অনলাইন কপি",u:"https://unb.com.bd/news/tag/114317"},
+  unb_ep_start:{t:"UNB · ই-পাসপোর্ট আবেদন",u:"https://unb.com.bd/news/tag/106478"},
+  unb_ep_fees:{t:"UNB · ই-পাসপোর্ট ফি ও সময়",u:"https://unb.com.bd/category/Lifestyle/how-to-get-e-passport-in-bangladesh-things-you-need-to-know/80603"},
+  wiki_pass:{t:"Wikipedia · বাংলাদেশি পাসপোর্ট ফি",u:"https://en.wikipedia.org/wiki/Bangladeshi_passport"},
+  unb_police:{t:"UNB · পুলিশ ভেরিফিকেশন ছাড়া ই-পাসপোর্ট",u:"https://unb.com.bd/category/Bangladesh/getting-e-passport-without-police-verification-in-bangladesh-documents-fees-and-online-application-process/154686"},
+  visafoto:{t:"Visafoto · বিদেশ থেকে ফি",u:"https://visafoto.com/bangladesh/e-passport-application-and-photo"},
+  wego:{t:"Wego · সুপার এক্সপ্রেস শুধু দেশে",u:"https://blog.wego.com/bangladesh-passport-renewal/"},
+  dt_lost:{t:"Dhaka Tribune · হারানো পাসপোর্টের নতুন নিয়ম",u:"https://www.dhakatribune.com/bangladesh/420982/the-curious-case-of-600-%E2%80%98lost%E2%80%99-passports-a-day"}
+};
+const KB = [
+  {id:"n1",svc:"nid_correction",scope:"all",src:"unb_nid",t:"NID সংশোধন অনলাইনে services.nidw.gov.bd পোর্টালে হয়: নিজের NID নম্বর দিয়ে অ্যাকাউন্ট খুলে লগইন, নির্ধারিত ফি পরিশোধ, তারপর তথ্য সম্পাদনা করে প্রমাণপত্র আপলোড।"},
+  {id:"n2",svc:"nid_correction",scope:"all",src:"unb_nid",t:"সংশোধন ফি বিকাশ, রকেটসহ মোবাইল ব্যাংকিংয়ে ঘরে বসে দেওয়া যায়। ফি দেওয়ার ৩০ মিনিট পর তথ্য সম্পাদনা শুরু করা যায়। সংশোধিত স্মার্ট কার্ড পেতে দুই মাস পর্যন্ত লাগতে পারে।"},
+  {id:"n3",svc:"nid_correction",scope:"all",src:"unb_nid",t:"নাম বা জন্ম তারিখ সংশোধনে জন্ম নিবন্ধন সনদ এবং অন্তত মাধ্যমিক (SSC) বা সমমানের পরীক্ষার সনদ লাগে।"},
+  {id:"n4",svc:"nid_correction",scope:"all",src:"tbs_nid",t:"জন্ম তারিখ সংশোধনে SSC সনদ বা জন্ম নিবন্ধনের সত্যায়িত কপি লাগে। নাম সংশোধনে ম্যাজিস্ট্রেট আদালতের হলফনামা ও পত্রিকায় বিজ্ঞপ্তি চাওয়া হতে পারে। আবেদনের পর সাক্ষাৎকার বা মাঠ পর্যায়ে যাচাই হতে পারে।"},
+  {id:"n5",svc:"nid_correction",scope:"all",src:"palo_45",t:"নির্বাচন কমিশন যেকোনো ধরনের NID সংশোধন আবেদন ৪৫ দিনের মধ্যে নিষ্পত্তি করার নির্দেশ দিয়েছে।"},
+  {id:"n6",svc:"nid_correction",scope:"all",src:"unb_nid",t:"ঠিকানা সংশোধনে বাড়ির দলিল, ইউটিলিটি বিল, ভাড়ার চুক্তি বা ভাড়ার রসিদের সত্যায়িত কপি লাগে। বিবাহিতদের স্বামী বা স্ত্রীর NID ও বিয়ের সনদের সত্যায়িত কপি লাগে।"},
+  {id:"n7",svc:"nid_correction",scope:"all",src:"unb_nid",t:"NID বিষয়ে তথ্যের জন্য হটলাইন ১০৫, সরকারি কর্মদিবসে সকাল ৯টা থেকে বিকাল ৫টা।"},
+  {id:"n8",svc:"nid_correction",scope:"all",src:"nid_fees",t:"সংশোধনের ফি সংশোধনের ধরন অনুযায়ী আলাদা; সঠিক অঙ্ক NID Wing-এর অফিসিয়াল ফি পেজে দেখা যায়।"},
+  {id:"n9",svc:"nid_correction",scope:"all",src:"tbs_nid",t:"দালাল ও মধ্যস্বত্বভোগীরা দ্রুত কাজের কথা বলে নির্ধারিত ফির অনেক বেশি টাকা নেয়; নির্বাচন অফিসের কম্পিউটার অপারেটর বাড়তি সার্ভিস ফি চাওয়ার ঘটনাও ঘটেছে।"},
+  {id:"n10",svc:"nid_correction",scope:"all",src:"unb_broker",t:"নির্বাচন কমিশন ভবনে NID সংশোধনের জন্য এক আবেদনকারীর কাছ থেকে ১ লাখ ৫ হাজার টাকা নেওয়ার অভিযোগে একজন দালাল আটক হয়েছিল।"},
+  {id:"n11",svc:"nid_correction",scope:"abroad",src:"dt_nid",t:"NID সংশোধনের সব আবেদন অনলাইনে গ্রহণ করে সংশ্লিষ্ট উপজেলা বা থানা নির্বাচন অফিস প্রক্রিয়া করে, কিছু ক্ষেত্রে নির্বাচন কমিশনের NID উইং।"},
+  {id:"n12",svc:"nid_correction",scope:"abroad",src:"bcg_dubai",t:"বিদেশে মিশনের মাধ্যমে NID নিবন্ধনে services.nidw.gov.bd/nid-pub-এ অনলাইন আবেদন, তারপর নির্ধারিত দিনে কনস্যুলেটে আঙুলের ছাপ, চোখের মণি, ছবি ও স্বাক্ষর দিতে হয়; যাচাই করে দেশের সংশ্লিষ্ট উপজেলা নির্বাচন অফিস। ফি ফেরতযোগ্য নয়।"},
+  {id:"l1",svc:"nid_lost",scope:"all",src:"tbs_gd",t:"NID হারালে এখন আর থানায় জিডি করতে হয় না; ফি দিয়ে অনলাইনে আবার আবেদন করলেই হয়। নির্বাচন কমিশন ৪ সেপ্টেম্বর ২০২৫-এ এই সিদ্ধান্ত নেয়।"},
+  {id:"l2",svc:"nid_lost",scope:"all",src:"nidw_dup",t:"কার্ড হারালে বা নষ্ট হলে নির্ধারিত পদ্ধতিতে আবেদন ও ফি পরিশোধ করে নির্বাচন কমিশনের কাছ থেকে নতুন কার্ড পাওয়া যায়।"},
+  {id:"l3",svc:"nid_lost",scope:"all",src:"unb_dl",t:"services.nidw.gov.bd-তে অ্যাকাউন্ট খুলে NID-এর অনলাইন কপি ডাউনলোড করা যায়।"},
+  {id:"l4",svc:"nid_lost",scope:"all",src:"nid_fees",t:"রি-ইস্যু ফি অফিসিয়াল ফি পেজে দেখা যায়।"},
+  {id:"p1",svc:"passport",scope:"all",src:"unb_ep_start",t:"ই-পাসপোর্টের আবেদন epassport.gov.bd-তে অনলাইনে করতে হয়; শুরুতেই বেছে নিতে হয় আপনি বাংলাদেশে আছেন নাকি বিদেশে। ফির চালান সরকারের ই-চালান ওয়েবসাইট থেকে নেওয়া যায়; দেশে ফির মধ্যে ১৫% ভ্যাট ধরা।"},
+  {id:"p2",svc:"passport",scope:"bd",src:"unb_ep_fees",t:"দেশে ই-পাসপোর্ট ফি (ভ্যাটসহ): ৪৮ পৃষ্ঠা ৫ বছর রেগুলার ৪,০২৫, এক্সপ্রেস ৬,৩২৫, সুপার এক্সপ্রেস ৮,৬২৫ টাকা; ৪৮ পৃষ্ঠা ১০ বছর ৫,৭৫০ / ৮,০৫০ / ১০,৩৫০; ৬৪ পৃষ্ঠা ৫ বছর ৬,৩২৫ / ৮,৬২৫ / ১২,০৭৫; ৬৪ পৃষ্ঠা ১০ বছর ৮,০৫০ / ১০,৩৫০ / ১৩,৮০০ টাকা।"},
+  {id:"p3",svc:"passport",scope:"bd",src:"unb_ep_fees",t:"ডেলিভারির সময়: রেগুলার ২১ কর্মদিবস, এক্সপ্রেস ১০ কর্মদিবস, সুপার এক্সপ্রেস ২ কর্মদিবস।"},
+  {id:"p4",svc:"passport",scope:"bd",src:"unb_police",t:"ই-পাসপোর্টে এখন পুলিশ ভেরিফিকেশন লাগে না। জমা দিতে লাগে পূরণ করা অনলাইন আবেদনের প্রিন্ট কপি ও ফি পরিশোধের রসিদ; কোনো কাগজ সত্যায়িত করতে হয় না।"},
+  {id:"p5",svc:"passport",scope:"all",src:"unb_police",t:"৬ বছরের কম বয়সী শিশুর জন্য ল্যাবে তোলা ধূসর ব্যাকগ্রাউন্ডের সাম্প্রতিক পাসপোর্ট সাইজ ছবি লাগে; ৬ বছরের বেশি বয়সীদের আলাদা ছবি লাগে না।"},
+  {id:"p6",svc:"passport",scope:"abroad",src:"visafoto",t:"বিদেশ থেকে আবেদনের ফি মার্কিন ডলারে; সাধারণ আবেদনকারীদের জন্য ৪৮ পৃষ্ঠা ৫ বছর রেগুলার থেকে শুরু, ছাত্র ও কিছু শ্রমিক কম ফিতে পান।"},
+  {id:"p7",svc:"passport",scope:"abroad",src:"wego",t:"সুপার এক্সপ্রেস ডেলিভারি শুধু বাংলাদেশের ভেতরের আবেদনে পাওয়া যায়, বিদেশ থেকে নয়।"},
+  {id:"x1",svc:"passport_lost",scope:"all",src:"dt_lost",t:"পাসপোর্ট হারালে, চুরি হলে বা নষ্ট হলে অনলাইনে জানাতে হয়। প্রথমবার হলে শুধু রেগুলার পুনঃইস্যুর ফি দিতে হয়।"},
+  {id:"x2",svc:"passport_lost",scope:"bd",src:"dt_lost",t:"নির্ধারিত সময়ের মধ্যে পুলিশ ভেরিফিকেশন রিপোর্ট না এলে জিডির কপি দিয়ে পুনঃইস্যুর প্রক্রিয়া এগোনো যায়, তারপর 'Lost Circular' জারি হয়।"},
+  {id:"x3",svc:"passport_lost",scope:"abroad",src:"dt_lost",t:"বিদেশে পাসপোর্ট হারালে সংশ্লিষ্ট বাংলাদেশ দূতাবাস, হাইকমিশন বা মিশনে জানাতে হয়; মিশন 'Lost Circular' জারি করে পুনঃইস্যুর আবেদন প্রক্রিয়া করে।"}
+];
+const FEES = { // BDT incl. 15% VAT, in-country (UNB, Wikipedia)
+  48:{5:{regular:4025,express:6325,super:8625},10:{regular:5750,express:8050,super:10350}},
+  64:{5:{regular:6325,express:8625,super:12075},10:{regular:8050,express:10350,super:13800}}
+};
+const DEL = {regular:"রেগুলার",express:"এক্সপ্রেস",super:"সুপার এক্সপ্রেস"};
+const SVC = {
+  nid_correction:{name:"NID তথ্য সংশোধন",portal:"https://services.nidw.gov.bd",portalName:"services.nidw.gov.bd"},
+  nid_lost:{name:"হারানো NID পুনরায় পাওয়া",portal:"https://services.nidw.gov.bd",portalName:"services.nidw.gov.bd"},
+  passport:{name:"ই-পাসপোর্ট (নতুন / নবায়ন)",portal:"https://www.epassport.gov.bd",portalName:"epassport.gov.bd"},
+  passport_lost:{name:"হারানো পাসপোর্ট",portal:"https://www.epassport.gov.bd",portalName:"epassport.gov.bd"}
+};
+
+/* ---------------- Helpers ---------------- */
+const BN = "০১২৩৪৫৬৭৮৯";
+const bn = n => String(n).replace(/\d/g,d=>BN[d]);
+const taka = n => "৳" + bn(n.toLocaleString("en-IN"));
+const asciiDigits = s => s.replace(/[০-৯]/g,c=>BN.indexOf(c));
+const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+
+/* Banglish → Bangla canonical tokens for retrieval */
+const SYN = {jonmo:"জন্ম",jonmotarikh:"জন্ম",tarikh:"তারিখ",dob:"জন্ম",birth:"জন্ম",nam:"নাম",naam:"নাম",name:"নাম",
+  passport:"পাসপোর্ট",pasport:"পাসপোর্ট",nid:"nid",voter:"nid",harano:"হারালে",hariye:"হারালে",haray:"হারালে",lost:"হারালে",
+  fee:"ফি",fi:"ফি",taka:"ফি",cost:"ফি",khoroch:"ফি",dam:"ফি",bidesh:"বিদেশ",abroad:"বিদেশ",probashi:"বিদেশ",
+  renew:"নবায়ন",notun:"নতুন",new:"নতুন",time:"সময়",somoy:"সময়",din:"কর্মদিবস",days:"কর্মদিবস",police:"পুলিশ",
+  document:"সনদ",documents:"সনদ",kagoj:"সনদ",lagbe:"লাগে",lage:"লাগে",thikana:"ঠিকানা",address:"ঠিকানা",
+  express:"এক্সপ্রেস",regular:"রেগুলার",super:"সুপার",chobi:"ছবি",photo:"ছবি",dalal:"দালাল",broker:"দালাল",gd:"জিডি",
+  ssc:"ssc",correction:"সংশোধন",songshodhon:"সংশোধন",bhul:"সংশোধন",vul:"সংশোধন",hotline:"হটলাইন",help:"হটলাইন"};
+const STOP = new Set(["কি","কী","কিভাবে","করব","করতে","আমার","আমি","আর","ও","এর","হয়","the","a","to","is","korte","ki","kivabe","amar","ami","er","e","hobe"]);
+function tokens(s){
+  return asciiDigits(s.toLowerCase()).split(/[^a-z0-9ঀ-৿]+/).filter(Boolean)
+    .map(w=>SYN[w]||w).filter(w=>!STOP.has(w)&&w.length>1);
+}
+/* BM25 over the knowledge base */
+const DOCS = KB.map(c=>({c,tk:tokens(c.t+" "+(SVC[c.svc]?.name||""))}));
+const AVG = DOCS.reduce((a,d)=>a+d.tk.length,0)/DOCS.length;
+const DF = {}; DOCS.forEach(d=>new Set(d.tk).forEach(w=>DF[w]=(DF[w]||0)+1));
+function retrieve(query, svc, loc, k=4){
+  const q = tokens(query); const N = DOCS.length;
+  return DOCS.map(d=>{
+    let s=0;
+    for(const w of new Set(q)){
+      const f = d.tk.filter(x=>x===w||(x.length>3&&x.startsWith(w))).length; if(!f) continue;
+      const idf = Math.log(1+(N-(DF[w]||0)+.5)/((DF[w]||0)+.5));
+      s += idf*(f*2.2)/(f+1.2*(.25+.75*d.tk.length/AVG));
+    }
+    if(svc && d.c.svc===svc) s += 2.5;            // service filter boost
+    if(svc && d.c.svc!==svc) s *= .2;
+    if(loc==="abroad" && d.c.scope==="bd") s *= .3; // scope filter
+    if(loc==="bd" && d.c.scope==="abroad") s *= .3;
+    return {c:d.c,s};
+  }).filter(x=>x.s>0.4).sort((a,b)=>b.s-a.s).slice(0,k);
+}
+
+
+export { VERIFIED, SRC, KB, FEES, DEL, SVC, retrieve, tokens, bn, taka };
