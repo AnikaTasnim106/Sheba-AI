@@ -670,7 +670,7 @@ function openDocCheck(){
       <div class="slot"><b>২. SSC সনদ বা জন্ম নিবন্ধন</b><input type="file" accept="image/*" id="dB${n}"><img id="pB${n}" hidden alt="প্রমাণপত্রের ছবি"></div>
     </div>
     <div class="row"><button class="btn solid" type="button" id="go${n}">মিলিয়ে দেখুন</button><button class="btn" type="button" id="smp${n}">নমুনা ডকুমেন্ট দিয়ে চেষ্টা করুন</button></div>
-    <p class="note">ছবি শুধু এই যাচাইয়ের জন্য পাঠানো হয়, সংরক্ষণ হয় না। আইডি বা রোল নম্বর কখনো দেখানো হয় না। চাইলে নম্বরের অংশ ঢেকে ছবি তুলুন।</p>`);
+    <div class="warn" style="margin-top:10px"><b>এটি ডেমো সংস্করণ: আসল NID বা সনদের ছবি দেবেন না।</b> নমুনা ডকুমেন্ট দিয়ে চেষ্টা করুন। ছবি পড়তে AI সেবায় (Google Gemini) পাঠানো হয়; আমাদের সার্ভার কিছু সংরক্ষণ করে না, আর আইডি বা রোল নম্বর কখনো দেখানো হয় না।</div>`);
   const files = {A:null,B:null};
   const show = (k,blob)=>{ files[k]=blob; const im=$("#p"+k+n); im.src=URL.createObjectURL(blob); im.hidden=false; };
   $("#dA"+n).addEventListener("change",e=>e.target.files[0]&&show("A",e.target.files[0]));
