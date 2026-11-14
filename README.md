@@ -13,7 +13,7 @@ Team **Inverse** · International AI Builders Congress 2026 · CivicSphere AI �
 - **Case file**: steps, document checklist, official fee, time, form draft, sources with a last-verified date.
 - **Exact passport fees** for any pages / validity / delivery option.
 - **Broker guard**: compares what a middleman asks for with the official fee.
-- **Privacy by design**: ID-number-like digits are masked in the browser before anything is sent; the server strips ID numbers from AI output; document photos are processed in memory and never stored; the app never asks for passwords or OTPs.
+- **Privacy by design**: ID-number-like digits are masked in the browser before anything is sent; the server strips ID numbers from AI output; our server never stores document photos; the app never asks for passwords or OTPs. The demo runs on the Gemini API free tier, whose terms let Google use inputs to improve its products, so the app tells users to try the labelled sample documents and not upload real ones. A production version would move to the paid tier.
 - **Honest limits**: services not yet covered get a clear "not yet", never a guess.
 - **Works without the AI server too**: if the API is unreachable, the page falls back to keyword understanding and answers straight from the knowledge base.
 
