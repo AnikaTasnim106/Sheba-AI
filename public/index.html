@@ -682,7 +682,7 @@ function openDocCheck(){
   $("#go"+n).addEventListener("click",async e=>{
     if(!files.A||!files.B){ e.target.textContent="দুটো ছবিই দিন"; setTimeout(()=>e.target.textContent="মিলিয়ে দেখুন",1600); return; }
     if(!API){ addBot(`<p>ডকুমেন্ট পড়তে AI সার্ভার লাগে, যা এই সংস্করণে চালু নেই। অনলাইন সংস্করণে (Vercel) এটা কাজ করে।</p>`); return; }
-    e.target.disabled=true; e.target.textContent="পড়ছি…";
+    e.target.disabled=true; e.target.textContent="পড়ছি… প্রায় ২০ সেকেন্ড";
     try{
       const images = await Promise.all([toJpeg(files.A),toJpeg(files.B)]);
       const r = await post("api/vision",{images},60000);
